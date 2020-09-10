@@ -32,38 +32,38 @@ use Sk\Mid\Exception\InvalidPhoneNumberException;
 class MidInputUtil
 {
 
-    public static function isPhoneNumberValid(?string $phoneNumber) : bool
+    public static function isPhoneNumberValid(string $phoneNumber = null) : bool
     {
         return preg_match("/^\+\d{8,30}$/", $phoneNumber);
     }
 
-    public static function isNationalIdentityNumberValid(?string $nationalIdentityNumber) : bool
+    public static function isNationalIdentityNumberValid(string $nationalIdentityNumber = null) : bool
     {
         // TODO validate checksum
         return preg_match("/^\d{11}$/", $nationalIdentityNumber);
     }
 
 
-    public static function validatePhoneNumber(?string $phoneNumber) : void
+    public static function validatePhoneNumber(string $phoneNumber = null) 
     {
         if (!self::isPhoneNumberValid($phoneNumber)) {
             throw new InvalidPhoneNumberException($phoneNumber);
         }
     }
 
-    public static function validateNationalIdentityNumber(?string $nationalIdentityNumber) : void
+    public static function validateNationalIdentityNumber(string $nationalIdentityNumber = null) 
     {
         if (!self::isNationalIdentityNumberValid($nationalIdentityNumber)) {
             throw new InvalidNationalIdentityNumberException($nationalIdentityNumber);
         }
     }
-    public static function validateUserInput(?string $phoneNumber, ?string $nationalIdentityNumber) : void
+    public static function validateUserInput(string $phoneNumber = null, string $nationalIdentityNumber = null) 
     {
         self::validatePhoneNumber($phoneNumber);
-        self::validateNationalIdentityNumber($nationalIdentityNumber);
+        self::validateNationalIdentityNumber($nationalIdentityNumber = null);
     }
 
-    public static function getValidatedPhoneNumber(?string $phoneNumberInput) :string
+    public static function getValidatedPhoneNumber(string $phoneNumberInput = null) :string
     {
         $cleanedPhoneNumber = preg_replace("/\s+/", "", $phoneNumberInput);
 
@@ -72,7 +72,7 @@ class MidInputUtil
         return $cleanedPhoneNumber;
     }
 
-    public static function getValidatedNationalIdentityNumber(?string $nationalIdentityNumber) :string
+    public static function getValidatedNationalIdentityNumber(string $nationalIdentityNumber = null) :string
     {
         $cleanedNationalIdentityNumber = preg_replace("/\s+/", "", $nationalIdentityNumber);
 
@@ -83,14 +83,14 @@ class MidInputUtil
 
 
 
-    public static function getValidatedUserInput(?string $phoneNumber, ?string $nationalIdentityNumber) : array
+    public static function getValidatedUserInput(string $phoneNumber = null, string $nationalIdentityNumber = null) : array
     {
         $cleanedPhoneNumber = self::getValidatedPhoneNumber($phoneNumber);
         $cleanedNationalIdentityNumber = self::getValidatedNationalIdentityNumber($nationalIdentityNumber);
         return array('phoneNumber' => $cleanedPhoneNumber, 'nationalIdentityNumber' => $cleanedNationalIdentityNumber);
     }
 
-    public static function isUserInputValid(?string $phoneNumber, ?string $nationalIdentityNumber) : bool
+    public static function isUserInputValid(string $phoneNumber = null, string $nationalIdentityNumber = null) : bool
     {
         return self::isPhoneNumberValid($phoneNumber) && self::isNationalIdentityNumberValid($nationalIdentityNumber);
     }
