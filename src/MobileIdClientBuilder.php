@@ -59,22 +59,22 @@ class MobileIdClientBuilder
     {
     }
 
-    public function getRelyingPartyUUID() : ?string
+    public function getRelyingPartyUUID()
     {
         return $this->relyingPartyUUID;
     }
 
-    public function getRelyingPartyName() : ?string
+    public function getRelyingPartyName()
     {
         return $this->relyingPartyName;
     }
 
-    public function getHostUrl() : ?string
+    public function getHostUrl()
     {
         return $this->hostUrl;
     }
 
-    public function getNetworkConnectionConfig() : ?string
+    public function getNetworkConnectionConfig()
     {
         return $this->networkConnectionConfig;
     }
@@ -94,60 +94,60 @@ class MobileIdClientBuilder
         return $this->customHeaders;
     }
 
-    public function getConnector() : ?MobileIdRestConnector
+    public function getConnector()
     {
         return $this->connector;
     }
 
-    public function withRelyingPartyUUID(?string $relyingPartyUUID) : MobileIdClientBuilder
+    public function withRelyingPartyUUID(string $relyingPartyUUID = null)
     {
         $this->relyingPartyUUID = $relyingPartyUUID;
         return $this;
     }
 
-    public function withCustomHeaders(?array $customHeaders) :MobileIdClientBuilder
+    public function withCustomHeaders(array $customHeaders = null)
     {
         $this->customHeaders = $customHeaders;
         return $this;
     }
 
-    public function withRelyingPartyName(?string $relyingPartyName) : MobileIdClientBuilder
+    public function withRelyingPartyName(string $relyingPartyName = null)
     {
         $this->relyingPartyName = $relyingPartyName;
         return $this;
     }
 
-    public function withHostUrl(string $hostUrl) : MobileIdClientBuilder
+    public function withHostUrl(string $hostUrl)
     {
         $this->hostUrl = $hostUrl;
         return $this;
     }
 
-    public function withNetworkConnectionConfig(string $networkConnectionConfig) : MobileIdClientBuilder
+    public function withNetworkConnectionConfig(string $networkConnectionConfig)
     {
         $this->networkConnectionConfig = $networkConnectionConfig;
         return $this;
     }
 
-    public function withPollingSleepTimeoutSeconds(int $pollingSleepTimeoutSeconds) : MobileIdClientBuilder
+    public function withPollingSleepTimeoutSeconds(int $pollingSleepTimeoutSeconds)
     {
         $this->pollingSleepTimeoutSeconds = $pollingSleepTimeoutSeconds;
         return $this;
     }
 
-    public function withLongPollingTimeoutSeconds(int $longPollingTimeoutSeconds) : MobileIdClientBuilder
+    public function withLongPollingTimeoutSeconds(int $longPollingTimeoutSeconds)
     {
         $this->longPollingTimeoutSeconds = $longPollingTimeoutSeconds;
         return $this;
     }
 
-    public function withMobileIdConnector(MobileIdRestConnector $mobileIdConnector) : MobileIdClientBuilder
+    public function withMobileIdConnector(MobileIdRestConnector $mobileIdConnector)
     {
         $this->connector = $mobileIdConnector;
         return $this;
     }
 
-    public function build() : MobileIdClient
+    public function build()
     {
         return new MobileIdClient($this);
     }

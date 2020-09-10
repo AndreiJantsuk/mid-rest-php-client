@@ -58,55 +58,55 @@ class AuthenticationRequestBuilder
     private $displayTextFormat;
 
 
-    public function withRelyingPartyUUID(?string $relyingPartyUUID) : AuthenticationRequestBuilder
+    public function withRelyingPartyUUID(string $relyingPartyUUID = null)
     {
         $this->relyingPartyUUID = $relyingPartyUUID;
         return $this;
     }
 
-    public function withRelyingPartyName(?string $relyingPartyName) : AuthenticationRequestBuilder
+    public function withRelyingPartyName(string $relyingPartyName = null)
     {
         $this->relyingPartyName = $relyingPartyName;
         return $this;
     }
 
-    public function withPhoneNumber(string $phoneNumber) : AuthenticationRequestBuilder
+    public function withPhoneNumber(string $phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
         return $this;
     }
 
-    public function withNationalIdentityNumber(string $nationalIdentityNumber) : AuthenticationRequestBuilder
+    public function withNationalIdentityNumber(string $nationalIdentityNumber)
     {
         $this->nationalIdentityNumber = $nationalIdentityNumber;
         return $this;
     }
 
-    public function withHashToSign(MobileIdAuthenticationHashToSign $hashToSign) : AuthenticationRequestBuilder
+    public function withHashToSign(MobileIdAuthenticationHashToSign $hashToSign)
     {
         $this->hashToSign = $hashToSign;
         return $this;
     }
 
-    public function withLanguage(Language $language) : AuthenticationRequestBuilder
+    public function withLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
 
-    public function withDisplayText(string $displayText) : AuthenticationRequestBuilder
+    public function withDisplayText(string $displayText)
     {
         $this->displayText = $displayText;
         return $this;
     }
 
-    public function withDisplayTextFormat(string $displayTextFormat) : AuthenticationRequestBuilder
+    public function withDisplayTextFormat(string $displayTextFormat)
     {
         $this->displayTextFormat = $displayTextFormat;
         return $this;
     }
 
-    public function build() : AuthenticationRequest
+    public function build()
     {
         $this->validateParameters();
 
@@ -138,16 +138,16 @@ class AuthenticationRequestBuilder
         }
     }
 
-    private function getHashToSign() : MobileIdAuthenticationHashToSign {
+    private function getHashToSign() {
         return $this->hashToSign;
     }
 
-    private function getRelyingPartyName() : ?string
+    private function getRelyingPartyName()
     {
         return $this->relyingPartyName;
     }
 
-    private function getRelyingPartyUUID() : ?string
+    private function getRelyingPartyUUID()
     {
         return $this->relyingPartyUUID;
     }
@@ -162,27 +162,30 @@ class AuthenticationRequestBuilder
         return $this->nationalIdentityNumber;
     }
 
-    protected function getHashType() : HashType
+    /**
+     * @return HashType
+     */
+    protected function getHashType()
     {
         return $this->getHashToSign()->getHashType();
     }
 
-    protected function getHashInBase64() : string
+    protected function getHashInBase64()
     {
         return $this->getHashToSign()->getHashInBase64();
     }
 
-    private function getLanguage() : Language
+    private function getLanguage()
     {
         return $this->language;
     }
 
-    private function getDisplayText() : ?string
+    private function getDisplayText()
     {
         return $this->displayText;
     }
 
-    private function getDisplayTextFormat() : ?string
+    private function getDisplayTextFormat()
     {
         return $this->displayTextFormat;
     }

@@ -48,7 +48,7 @@ class VerificationCodeCalculator
         return !is_null($hash) && strlen($hash) >= self::MINIMUM_HASH_LENGTH;
     }
 
-    private static function hexToBinary(?string $hash) : string {
+    private static function hexToBinary(string $hash = null) : string {
         $bin = "";
         $array = str_split($hash);
         foreach ($array as $char) {

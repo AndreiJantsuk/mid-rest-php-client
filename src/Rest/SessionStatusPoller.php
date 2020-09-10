@@ -67,24 +67,24 @@ class SessionStatusPoller
 
     }
 
-    public function fetchFinalSignatureSessionStatus(string $sessionId, int $longPollSeconds = 20) : SessionStatus
+    public function fetchFinalSignatureSessionStatus(string $sessionId, int $longPollSeconds = 20)
     {
         return $this->fetchFinalSessionStatus($sessionId, $longPollSeconds);
     }
 
-    public function fetchFinalAuthenticationSession(string $sessionId, int $longPollSeconds = 20) : SessionStatus
+    public function fetchFinalAuthenticationSession(string $sessionId, int $longPollSeconds = 20)
     {
         return $this->fetchFinalSessionStatus($sessionId, $longPollSeconds);
     }
 
-    public function fetchFinalSessionStatus(string $sessionId, int $longPollSeconds = null) : SessionStatus
+    public function fetchFinalSessionStatus(string $sessionId, int $longPollSeconds = null)
     {
         $sessionStatus = $this->pollForFinalSessionStatus($sessionId, $longPollSeconds);
         $this->validateResult($sessionStatus);
         return $sessionStatus;
     }
 
-    private function pollForFinalSessionStatus(string $sessionId, ?int $longPollSeconds = 20) : SessionStatus
+    private function pollForFinalSessionStatus(string $sessionId, int $longPollSeconds = 20)
     {
         $sessionStatus = null;
 
@@ -102,19 +102,19 @@ class SessionStatusPoller
         return $sessionStatus;
     }
 
-    private function pollSessionStatus(string $sessionId, ?int $longPollSeconds = null) : SessionStatus
+    private function pollSessionStatus(string $sessionId, int $longPollSeconds = null)
     {
         $this->logger->debug('Polling session status');
         $request = $this->createSessionStatusRequest($sessionId, $longPollSeconds);
         return $this->connector->pullAuthenticationSessionStatus($request);
     }
 
-    private function createSessionStatusRequest(string $sessionId, ?int $longPollSeconds) : SessionStatusRequest
+    private function createSessionStatusRequest(string $sessionId, int $longPollSeconds)
     {
         return new SessionStatusRequest($sessionId, $longPollSeconds);
     }
 
-    private function validateResult(SessionStatus $sessionStatus) : void
+    private function validateResult(SessionStatus $sessionStatus)
     {
         $result = $sessionStatus->getResult();
         if ($result == null) {
@@ -135,7 +135,7 @@ class SessionStatusPoller
      * @throws PhoneNotAvailableException
      * @throws UserCancellationException
      */
-    private function validateResultOfString(string $result) : void
+    private function validateResultOfString(string $result)
     {
         $result = strtoupper($result);
 
@@ -168,7 +168,7 @@ class SessionStatusPoller
         }
     }
 
-    public static function newBuilder() : SessionStatusPollerBuilder
+    public static function newBuilder()
     {
         return new SessionStatusPollerBuilder();
     }
@@ -208,25 +208,25 @@ class SessionStatusPollerBuilder
     }
 
 
-    public function withConnector(MobileIdConnector $connector) : SessionStatusPollerBuilder
+    public function withConnector(MobileIdConnector $connector)
     {
         $this->connector = $connector;
         return $this;
     }
 
-    public function withPollingSleepTimeoutSeconds(int $pollingSleepTimeoutSeconds) : SessionStatusPollerBuilder
+    public function withPollingSleepTimeoutSeconds(int $pollingSleepTimeoutSeconds)
     {
         $this->pollingSleepTimeoutSeconds = $pollingSleepTimeoutSeconds;
         return $this;
     }
 
-    public function withLongPollingTimeoutSeconds(int $longPollingTimeoutSeconds) : SessionStatusPollerBuilder
+    public function withLongPollingTimeoutSeconds(int $longPollingTimeoutSeconds)
     {
         $this->longPollingTimeoutSeconds = $longPollingTimeoutSeconds;
         return $this;
     }
 
-    public function build() : SessionStatusPoller
+    public function build()
     {
         return new SessionStatusPoller($this);
     }

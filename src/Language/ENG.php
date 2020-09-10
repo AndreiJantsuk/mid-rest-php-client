@@ -8,7 +8,7 @@ class ENG extends Language
     {
         parent::__construct("ENG");
     }
-    public static function asType() : Language
+    public static function asType()
     {
         return new ENG();
     }

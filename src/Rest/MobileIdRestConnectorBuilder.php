@@ -44,22 +44,22 @@ class MobileIdRestConnectorBuilder
     /** @var array $customHeaders */
     private $customHeaders = array();
 
-    public function getEndpointUrl() : ?string
+    public function getEndpointUrl()
     {
         return $this->endpointUrl;
     }
 
-    public function getClientConfig() : ?string
+    public function getClientConfig()
     {
         return $this->clientConfig;
     }
 
-    public function getRelyingPartyUUID() : ?string
+    public function getRelyingPartyUUID()
     {
         return $this->relyingPartyUUID;
     }
 
-    public function getRelyingPartyName() : ?string
+    public function getRelyingPartyName()
     {
         return $this->relyingPartyName;
     }
@@ -67,42 +67,42 @@ class MobileIdRestConnectorBuilder
     /**
      * @return array
      */
-    public function getCustomHeaders(): ?array
+    public function getCustomHeaders()
     {
         return $this->customHeaders;
     }
 
-    public function withEndpointUrl(?string $endpointUrl) : MobileIdRestConnectorBuilder
+    public function withEndpointUrl(string $endpointUrl = null)
     {
         $this->endpointUrl = $endpointUrl;
         return $this;
     }
 
-    public function withClientConfig(?string $clientConfig) : MobileIdRestConnectorBuilder
+    public function withClientConfig(string $clientConfig = null)
     {
         $this->clientConfig = $clientConfig;
         return $this;
     }
 
-    public function withRelyingPartyUUID(?string $relyingPartyUUID) : MobileIdRestConnectorBuilder
+    public function withRelyingPartyUUID(string $relyingPartyUUID = null)
     {
         $this->relyingPartyUUID = $relyingPartyUUID;
         return $this;
     }
 
-    public function withRelyingPartyName(?string $relyingPartyName) : MobileIdRestConnectorBuilder
+    public function withRelyingPartyName(string $relyingPartyName = null)
     {
         $this->relyingPartyName = $relyingPartyName;
         return $this;
     }
 
-    public function withCustomHeaders(?array $customHeaders) : MobileIdRestConnectorBuilder
+    public function withCustomHeaders(array $customHeaders = null)
     {
         $this->customHeaders = $customHeaders;
         return $this;
     }
 
-    public function build() : MobileIdRestConnector
+    public function build()
     {
         return new MobileIdRestConnector($this);
     }

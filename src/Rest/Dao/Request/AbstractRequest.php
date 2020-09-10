@@ -38,22 +38,22 @@ abstract class AbstractRequest
     {
     }
 
-    public function getRelyingPartyUUID() : ?string
+    public function getRelyingPartyUUID()
     {
         return $this->relyingPartyUUID;
     }
 
-    public function setRelyingPartyUUID(?string $relyingPartyUUID) : void
+    public function setRelyingPartyUUID(string $relyingPartyUUID = null)
     {
         $this->relyingPartyUUID = $relyingPartyUUID;
     }
 
-    public function getRelyingPartyName() : ?string
+    public function getRelyingPartyName()
     {
         return $this->relyingPartyName;
     }
 
-    public function setRelyingPartyName(?string $relyingPartyName) : void
+    public function setRelyingPartyName(string $relyingPartyName = null)
     {
         $this->relyingPartyName = $relyingPartyName;
     }

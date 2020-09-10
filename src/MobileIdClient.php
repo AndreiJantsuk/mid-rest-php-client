@@ -78,7 +78,7 @@ class MobileIdClient
                 ->build();
     }
 
-    public function getMobileIdConnector(): MobileIdConnector
+    public function getMobileIdConnector()
     {
         if (is_null($this->connector)) {
             $this->connector = MobileIdRestConnector::newBuilder()
@@ -92,7 +92,7 @@ class MobileIdClient
         return $this->connector;
     }
 
-    public function getSessionStatusPoller(): SessionStatusPoller
+    public function getSessionStatusPoller()
     {
         return $this->sessionStatusPoller;
     }
@@ -123,7 +123,7 @@ class MobileIdClient
     }
 
 
-    public function createMobileIdAuthentication(SessionStatus $sessionStatus, MobileIdAuthenticationHashToSign $hash): MobileIdAuthentication
+    public function createMobileIdAuthentication(SessionStatus $sessionStatus, MobileIdAuthenticationHashToSign $hash)
     {
         $this->validateResponse($sessionStatus);
         $sessionSignature = $sessionStatus->getSignature();
@@ -140,7 +140,7 @@ class MobileIdClient
 
     }
 
-    private function validateCertificateResult(?string $result): void
+    private function validateCertificateResult(string $result = null)
     {
         if (strcasecmp('NOT_FOUND', $result) == 0) {
             self::$logger->error('No certificate for the user was found');
@@ -154,7 +154,7 @@ class MobileIdClient
         }
     }
 
-    private function validateCertificateResponse(CertificateResponse $certificateChoiceResponse): void
+    private function validateCertificateResponse(CertificateResponse $certificateChoiceResponse)
     {
         if (is_null($certificateChoiceResponse->getCert()) || empty($certificateChoiceResponse->getCert())) {
             self::$logger->error('Certificate was not present in the session status response');
@@ -163,7 +163,7 @@ class MobileIdClient
     }
 
 
-    private function validateResponse(SessionStatus $sessionStatus): void
+    private function validateResponse(SessionStatus $sessionStatus)
     {
         if (is_null($sessionStatus->getSignature()) || empty($sessionStatus->getSignature()->getValue())) {
             self::$logger->error('Signature was not present in the response');
@@ -171,7 +171,7 @@ class MobileIdClient
         }
     }
 
-    public static function newBuilder(): MobileIdClientBuilder
+    public static function newBuilder()
     {
         return new MobileIdClientBuilder();
     }

@@ -65,7 +65,7 @@ class AuthenticationRequest extends AbstractRequest implements JsonSerializable
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $phoneNumber): void
+    public function setPhoneNumber(string $phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -75,7 +75,7 @@ class AuthenticationRequest extends AbstractRequest implements JsonSerializable
         return $this->nationalIdentityNumber;
     }
 
-    public function setNationalIdentityNumber(string $nationalIdentityNumber): void
+    public function setNationalIdentityNumber(string $nationalIdentityNumber)
     {
         $this->nationalIdentityNumber = $nationalIdentityNumber;
     }
@@ -85,7 +85,7 @@ class AuthenticationRequest extends AbstractRequest implements JsonSerializable
         return $this->hash;
     }
 
-    public function setHash(string $hash): void
+    public function setHash(string $hash)
     {
         $this->hash = $hash;
     }
@@ -95,7 +95,7 @@ class AuthenticationRequest extends AbstractRequest implements JsonSerializable
         return $this->hashType;
     }
 
-    public function setHashType(string $hashType): void
+    public function setHashType(string $hashType)
     {
         $this->hashType = $hashType;
     }
@@ -105,32 +105,32 @@ class AuthenticationRequest extends AbstractRequest implements JsonSerializable
         return $this->language;
     }
 
-    public function setLanguage(Language $language): void
+    public function setLanguage(Language $language)
     {
         $this->language = $language;
     }
 
-    public function getDisplayText(): ?string
+    public function getDisplayText()
     {
         return $this->displayText;
     }
 
-    public function setDisplayText(?string $displayText): void
+    public function setDisplayText(string $displayText = null)
     {
         $this->displayText = $displayText;
     }
 
-    public function getDisplayTextFormat(): ?string
+    public function getDisplayTextFormat()
     {
         return $this->displayTextFormat;
     }
 
-    public function setDisplayTextFormat(?string $displayTextFormat): void
+    public function setDisplayTextFormat(string $displayTextFormat = null)
     {
         $this->displayTextFormat = $displayTextFormat;
     }
 
-    public static function newBuilder() : AuthenticationRequestBuilder
+    public static function newBuilder()
     {
         return new AuthenticationRequestBuilder();
     }
