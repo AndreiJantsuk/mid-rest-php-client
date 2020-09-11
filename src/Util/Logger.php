@@ -50,7 +50,7 @@ class Logger
         return $this->traceEnabled;
     }
 
-    public function setTraceEnabled(bool $traceEnabled) : void
+    public function setTraceEnabled(bool $traceEnabled)
     {
         $this->traceEnabled = $traceEnabled;
     }
@@ -60,27 +60,27 @@ class Logger
         return $this->debugEnabled;
     }
 
-    public function setDebugEnabled(bool $debugEnabled) : void
+    public function setDebugEnabled(bool $debugEnabled)
     {
         $this->debugEnabled = $debugEnabled;
     }
 
-    public function error(string $errorMessage) : void
+    public function error(string $errorMessage)
     {
         $this->debug_to_console(date("H:i:s").' '.$this->className.' error: '.$errorMessage);
     }
 
-    public function debug(string $debugMessage) : void
+    public function debug(string $debugMessage)
     {
         $this->debug_to_console(date("H:i:s").' '.$this->className.' debug: '.$debugMessage);
     }
 
-    public function trace(string $traceMessage) : void
+    public function trace(string $traceMessage)
     {
         $this->debug_to_console(date("H:i:s").' '.$this->className.' trace: '.$traceMessage);
     }
 
-    private function debug_to_console(string $message) : void {
+    private function debug_to_console(string $message) {
         // you can add logging here
     }
 }

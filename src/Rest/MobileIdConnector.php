@@ -35,11 +35,11 @@ use Sk\Mid\Rest\Dao\SessionStatus;
 interface MobileIdConnector
 {
 
-    public function initAuthentication(AuthenticationRequest $request) : AuthenticationResponse;
+    public function initAuthentication(AuthenticationRequest $request);
 
-    public function pullAuthenticationSessionStatus(SessionStatusRequest $request) : SessionStatus;
+    public function pullAuthenticationSessionStatus(SessionStatusRequest $request);
 
-    public function pullCertificate(CertificateRequest $request) : CertificateResponse;
+    public function pullCertificate(CertificateRequest $request);
 
 
 }

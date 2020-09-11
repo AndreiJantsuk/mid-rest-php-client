@@ -60,7 +60,7 @@ class MidInputUtil
     public static function validateUserInput(string $phoneNumber = null, string $nationalIdentityNumber = null) 
     {
         self::validatePhoneNumber($phoneNumber);
-        self::validateNationalIdentityNumber($nationalIdentityNumber = null);
+        self::validateNationalIdentityNumber($nationalIdentityNumber);
     }
 
     public static function getValidatedPhoneNumber(string $phoneNumberInput = null) :string

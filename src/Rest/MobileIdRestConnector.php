@@ -85,7 +85,7 @@ class MobileIdRestConnector implements MobileIdConnector
         $this->customHeaders = $builder->getCustomHeaders();
     }
 
-    public function pullCertificate(CertificateRequest $request) : CertificateResponse
+    public function pullCertificate(CertificateRequest $request)
     {
         $this->setRequestRelyingPartyDetailsIfMissing($request);
 
@@ -97,14 +97,14 @@ class MobileIdRestConnector implements MobileIdConnector
         return $certificateResponse;
     }
 
-    public function initAuthentication(AuthenticationRequest $request) : AuthenticationResponse
+    public function initAuthentication(AuthenticationRequest $request)
     {
         $this->setRequestRelyingPartyDetailsIfMissing($request);
         $url = $this->endpointUrl . '/authentication';
         return $this->postAuthenticationRequest($url, $request);
     }
 
-    private function setRequestRelyingPartyDetailsIfMissing(AbstractRequest $request) : void
+    private function setRequestRelyingPartyDetailsIfMissing(AbstractRequest $request)
     {
         if (is_null($request->getRelyingPartyUUID())) {
             $request->setRelyingPartyUUID($this->relyingPartyUUID);
@@ -120,7 +120,7 @@ class MobileIdRestConnector implements MobileIdConnector
         }
     }
 
-    public function pullAuthenticationSessionStatus(SessionStatusRequest $request) : SessionStatus
+    public function pullAuthenticationSessionStatus(SessionStatusRequest $request)
     {
         $url = $this->endpointUrl. '/authentication/session/' . $request->getSessionId();
 
@@ -135,7 +135,7 @@ class MobileIdRestConnector implements MobileIdConnector
     }
 
 
-    private function postCertificateRequest(string $uri, CertificateRequest $request) : CertificateResponse
+    private function postCertificateRequest(string $uri, CertificateRequest $request)
     {
         $responseJson = $this->postRequest($uri, $request);
         if (isset($responseJson['error'])) {
@@ -164,7 +164,7 @@ class MobileIdRestConnector implements MobileIdConnector
         
     }
 
-    private function postAuthenticationRequest(string $uri, AuthenticationRequest $request) : AuthenticationResponse
+    private function postAuthenticationRequest(string $uri, AuthenticationRequest $request)
     {
         $responseJson = $this->postRequest($uri, $request);
         return new AuthenticationResponse($responseJson);
@@ -205,7 +205,7 @@ class MobileIdRestConnector implements MobileIdConnector
 
     }
 
-    public static function newBuilder() : MobileIdRestConnectorBuilder
+    public static function newBuilder()
     {
         return new MobileIdRestConnectorBuilder();
     }

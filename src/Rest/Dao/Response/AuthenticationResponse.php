@@ -42,7 +42,7 @@ class AuthenticationResponse
         return $this->sessionId;
     }
 
-    public function setSessionId(string $sessionId) : void
+    public function setSessionId(string $sessionId)
     {
         $this->sessionId = $sessionId;
     }
