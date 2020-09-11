@@ -23,6 +23,12 @@
     "psr-4": {
       "Sk\\Mid\\Tests\\": "tests/"
     }
-  }
+  },
+  "repositories": [
+    {
+      "url": "https://github.com/AndreiJantsuk/php-x509-verify.git",
+      "type": "git"
+    }
+  ]
 }
 
