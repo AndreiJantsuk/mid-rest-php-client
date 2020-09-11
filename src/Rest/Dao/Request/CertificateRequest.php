@@ -47,7 +47,7 @@ class CertificateRequest extends AbstractRequest implements JsonSerializable
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $phoneNumber) : void
+    public function setPhoneNumber(string $phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -57,7 +57,7 @@ class CertificateRequest extends AbstractRequest implements JsonSerializable
         return $this->nationalIdentityNumber;
     }
 
-    public function setNationalIdentityNumber(string $nationalIdentityNumber) : void
+    public function setNationalIdentityNumber(string $nationalIdentityNumber)
     {
         $this->nationalIdentityNumber = $nationalIdentityNumber;
     }

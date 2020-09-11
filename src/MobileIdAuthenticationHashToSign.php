@@ -71,7 +71,7 @@ class MobileIdAuthenticationHashToSign
         }
     }
 
-    public function getHashType() : HashType
+    public function getHashType()
     {
         return $this->hashType;
     }
@@ -111,7 +111,7 @@ class MobileIdAuthenticationHashToSign
         return new MobileIdAuthenticationHashToSignBuilder();
     }
 
-    public static function strToHashType($hashTypeStr) : HashType {
+    public static function strToHashType($hashTypeStr) {
 
         switch ($hashTypeStr) {
             case 'sha256':

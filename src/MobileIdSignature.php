@@ -57,7 +57,7 @@ class MobileIdSignature
         return $this->algorithmName;
     }
 
-    public static function newBuilder() : MobileIdSignatureBuilder
+    public static function newBuilder()
     {
         return new MobileIdSignatureBuilder();
     }
@@ -86,7 +86,7 @@ class MobileIdSignatureBuilder
         return $this->algorithmName;
     }
 
-    public function withValueInBase64(string $valueInBase64) : MobileIdSignatureBuilder
+    public function withValueInBase64(string $valueInBase64)
     {
         if (FALSE === base64_decode($valueInBase64))
         {
@@ -97,13 +97,13 @@ class MobileIdSignatureBuilder
         return $this;
     }
 
-    public function withAlgorithmName(string $algorithmName) : MobileIdSignatureBuilder
+    public function withAlgorithmName(string $algorithmName)
     {
         $this->algorithmName = $algorithmName;
         return $this;
     }
 
-    public function build() : MobileIdSignature
+    public function build()
     {
         return new MobileIdSignature($this);
     }

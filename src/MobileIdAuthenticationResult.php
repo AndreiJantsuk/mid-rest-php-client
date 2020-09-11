@@ -42,7 +42,7 @@ class MobileIdAuthenticationResult
     {
     }
 
-    public function getAuthenticationIdentity() : ?MidIdentity
+    public function getAuthenticationIdentity()
     {
         return $this->authenticationIdentity;
     }
@@ -57,7 +57,7 @@ class MobileIdAuthenticationResult
         return $this->valid;
     }
 
-    public function setValid(bool $valid) : void
+    public function setValid(bool $valid)
     {
         $this->valid = $valid;
     }
@@ -72,9 +72,8 @@ class MobileIdAuthenticationResult
         return implode("; ", $this->getErrors());
     }
 
-    public function addError(string $error) : void
+    public function addError(string $error)
     {
         array_push($this->errors, $error);
     }
-
 }

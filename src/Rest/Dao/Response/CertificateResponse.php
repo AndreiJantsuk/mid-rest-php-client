@@ -45,7 +45,7 @@ class CertificateResponse
         return $this->result;
     }
 
-    public function setResult(?string $result) : void
+    public function setResult(string $result = null)
     {
         $this->result = $result;
     }
@@ -55,7 +55,7 @@ class CertificateResponse
         return $this->cert;
     }
 
-    public function setCert(?string $cert) : void
+    public function setCert(?string $cert)
     {
         $this->cert = $cert;
     }

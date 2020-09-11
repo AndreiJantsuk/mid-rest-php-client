@@ -23,12 +23,12 @@ class MobileIdRestConnectorAuthenticationIT extends TestCase
 
     private $connector;
 
-    private function getConnector() : MobileIdRestConnector
+    private function getConnector()
     {
         return $this->connector;
     }
 
-    protected function setUp() : void
+    protected function setUp()
     {
         $this->connector = MobileIdRestConnector::newBuilder()
             ->withEndpointUrl(TestData::TEST_URL)

@@ -44,7 +44,7 @@ class AuthenticationResponseValidator
         $this->logger = new Logger('AuthenticationResponseValidator');
     }
 
-    public function validate(Mobileidauthentication $authentication) : MobileIdAuthenticationResult
+    public function validate(Mobileidauthentication $authentication)
     {
         $this->validateAuthentication($authentication);
         $authenticationResult = new MobileIdAuthenticationResult();
@@ -71,7 +71,7 @@ class AuthenticationResponseValidator
         return $authenticationResult;
     }
 
-    private function validateAuthentication(Mobileidauthentication $authentication) : void
+    private function validateAuthentication(Mobileidauthentication $authentication)
     {
         if (is_null($authentication->getCertificate())) {
             throw new MidInternalErrorException('Certificate is not present in the authentication response');

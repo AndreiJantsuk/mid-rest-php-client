@@ -26,7 +26,7 @@ class MobileIdRestConnectorCertificateIT extends TestCase
         return $this->connector;
     }
 
-    protected function setUp() : void
+    protected function setUp()
     {
         $this->connector = MobileIdRestConnector::newBuilder()
             ->withEndpointUrl(TestData::TEST_URL)

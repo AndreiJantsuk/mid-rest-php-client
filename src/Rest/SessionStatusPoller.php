@@ -84,9 +84,13 @@ class SessionStatusPoller
         return $sessionStatus;
     }
 
-    private function pollForFinalSessionStatus(string $sessionId, int $longPollSeconds = 20)
+    private function pollForFinalSessionStatus(string $sessionId, $longPollSeconds = null)
     {
         $sessionStatus = null;
+
+        if ($longPollSeconds === null) {
+            $longPollSeconds = 20;
+        }
 
         while ($sessionStatus == null || strcasecmp($sessionStatus->getState(), 'RUNNING') == 0) {
             $sessionStatus = $this->pollSessionStatus($sessionId, $longPollSeconds);

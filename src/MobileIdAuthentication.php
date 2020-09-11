@@ -81,12 +81,12 @@ class MobileIdAuthentication
         return $this->signedHashInBase64;
     }
 
-    public function getHashType() : ?HashType
+    public function getHashType()
     {
         return $this->hashType;
     }
 
-    public function getSignatureValueInBase64() : ?string
+    public function getSignatureValueInBase64()
     {
         return $this->signatureValueInBase64;
     }
@@ -96,7 +96,7 @@ class MobileIdAuthentication
         return $this->algorithmName;
     }
 
-    public function getCertificate() : MidCertificate
+    public function getCertificate()
     {
         return new MidCertificate($this->certificate);
     }
@@ -106,17 +106,17 @@ class MobileIdAuthentication
         return $this->certificate;
     }
 
-    public static function newBuilder() : MobileIdAuthenticationBuilder
+    public static function newBuilder()
     {
         return new MobileIdAuthenticationBuilder();
     }
 
-    public function constructAuthenticationIdentity() : MidIdentity
+    public function constructAuthenticationIdentity()
     {
         return MidIdentity::parseFromCertificate($this->getCertificate());
     }
 
-    public function getValidatedAuthenticationResult() : MobileIdAuthenticationResult
+    public function getValidatedAuthenticationResult()
     {
         $authenticationResponseValidator = new AuthenticationResponseValidator();
         return $authenticationResponseValidator->validate($this);
@@ -150,73 +150,73 @@ class MobileIdAuthenticationBuilder
     {
     }
 
-    public function getResult() : ?string
+    public function getResult()
     {
         return $this->result;
     }
 
-    public function getSignedHashInBase64() : ?string
+    public function getSignedHashInBase64()
     {
         return $this->signedHashInBase64;
     }
 
-    public function getHashType() : ?HashType
+    public function getHashType()
     {
         return $this->hashType;
     }
 
-    public function getSignatureValueInBase64() : ?string
+    public function getSignatureValueInBase64()
     {
         return $this->signatureValueInBase64;
     }
 
-    public function getAlgorithmName() : ?string
+    public function getAlgorithmName()
     {
         return $this->algorithmName;
     }
 
-    public function getCertificate() : ?array
+    public function getCertificate()
     {
         return $this->certificate;
     }
 
-    public function withResult(string $result) : MobileIdAuthenticationBuilder
+    public function withResult(string $result)
     {
         $this->result = $result;
         return $this;
     }
 
-    public function withSignedHashInBase64(string $signedHashInBase64) : MobileIdAuthenticationBuilder
+    public function withSignedHashInBase64(string $signedHashInBase64)
     {
         $this->signedHashInBase64 = $signedHashInBase64;
         return $this;
     }
 
-    public function withHashType(?HashType $hashType) : MobileIdAuthenticationBuilder
+    public function withHashType($hashType)
     {
         $this->hashType = $hashType;
         return $this;
     }
 
-    public function withSignatureValueInBase64(string $signatureValueInBase64) : MobileIdAuthenticationBuilder
+    public function withSignatureValueInBase64(string $signatureValueInBase64)
     {
         $this->signatureValueInBase64 = $signatureValueInBase64;
         return $this;
     }
 
-    public function withAlgorithmName(string $algorithmName) : MobileIdAuthenticationBuilder
+    public function withAlgorithmName(string $algorithmName)
     {
         $this->algorithmName = $algorithmName;
         return $this;
     }
 
-    public function withCertificate(?array $certificate) : MobileIdAuthenticationBuilder
+    public function withCertificate($certificate)
     {
         $this->certificate = $certificate;
         return $this;
     }
 
-    public function build(): MobileIdAuthentication
+    public function build()
     {
         return new MobileIdAuthentication($this);
     }

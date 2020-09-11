@@ -62,7 +62,7 @@ class SessionStatus
 
     }
 
-    public function getState() : ?string
+    public function getState()
     {
         return $this->state;
     }
@@ -72,17 +72,17 @@ class SessionStatus
         $this->state = $state;
     }
 
-    public function getResult() : ?string
+    public function getResult()
     {
         return $this->result;
     }
 
-    public function setResult(?string $result)
+    public function setResult($result = null)
     {
         $this->result = $result;
     }
 
-    public function getSignature() : MobileIdSignature
+    public function getSignature()
     {
         return $this->signature;
     }
@@ -100,7 +100,7 @@ class SessionStatus
         return $this->cert;
     }
 
-    public function setCert(?string $cert)
+    public function setCert($cert = null)
     {
         $this->cert = $cert;
     }

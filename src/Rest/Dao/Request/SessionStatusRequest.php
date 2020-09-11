@@ -33,7 +33,7 @@ class SessionStatusRequest
     /** @var int $sessionStatusResponseSocketTimeoutMs */
     private $sessionStatusResponseSocketTimeoutMs;
 
-    public function __construct(string $sessionId, ?int $longPollSeconds = null )
+    public function __construct(string $sessionId, $longPollSeconds = null)
     {
         $this->sessionId = $sessionId;
 
@@ -47,7 +47,7 @@ class SessionStatusRequest
         return $this->sessionId;
     }
 
-    public function getSessionStatusResponseSocketTimeoutMs() : ?int
+    public function getSessionStatusResponseSocketTimeoutMs()
     {
         return $this->sessionStatusResponseSocketTimeoutMs;
     }
