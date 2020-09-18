@@ -2,3 +2,4 @@ vendor/*
 .idea/*
 dump.rdb
 composer.lock
+**.DS_Store
