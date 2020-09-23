@@ -1,11 +1,7 @@
 language: php
 php:
-  - '7.2'
+  - '7.0'
 
 before_install:
   - cp -a ./src/resources/test_certificates/. ./src/resources/trusted_certificates/
   - composer install
-script: vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.xml --configuration phpunit.xml tests
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
