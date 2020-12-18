@@ -32,4 +32,5 @@ abstract class MobileIdAuthenticationError
     const SIGNATURE_VERIFICATION_FAILURE = 'Signature verification failed';
     const CERTIFICATE_EXPIRED = 'Signer\'s certificate expired';
     const CERTIFICATE_NOT_TRUSTED = 'Signer\'s certificate not trusted';
+    const CERTIFICATE_POLICY_IDENTIFIER_VALUE_NOT_TRUSTED = 'Signer\'s certificate policy identifier value not trusted';
 }

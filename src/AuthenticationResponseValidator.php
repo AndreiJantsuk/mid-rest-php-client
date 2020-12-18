@@ -34,6 +34,19 @@ use Sk\Mid\Util\Logger;
 
 class AuthenticationResponseValidator
 {
+    const TRUSTED_POLICY_IDENTIFIER_VALUES = [
+        '1.3.6.1.4.1.10015.1.1',
+        '1.3.6.1.4.1.10015.1.2',
+        '1.3.6.1.4.1.51361.1.1.1',
+        '1.3.6.1.4.1.51361.1.1.2',
+        '1.3.6.1.4.1.51361.1.1.3',
+        '1.3.6.1.4.1.51361.1.1.4',
+        '1.3.6.1.4.1.51361.1.1.5',
+        '1.3.6.1.4.1.51361.1.1.6',
+        '1.3.6.1.4.1.51361.1.1.7',
+        '1.3.6.1.4.1.51455.1.1.1',
+    ];
+
     /** @var Logger $logger */
     private $logger;
 
@@ -62,6 +75,11 @@ class AuthenticationResponseValidator
         if ( !$this->verifyCertificateTrusted( $authentication->getCertificateX509() ) ) {
             $authenticationResult->setValid( false );
             $authenticationResult->addError( MobileIdAuthenticationError::CERTIFICATE_NOT_TRUSTED );
+            throw new CertificateNotTrustedException();
+        }
+        if ( !$this->verifyCertificatePolicyIdentityValue( $authentication->getCertificateX509() ) ) {
+            $authenticationResult->setValid( false );
+            $authenticationResult->addError( MobileIdAuthenticationError::CERTIFICATE_POLICY_IDENTIFIER_VALUE_NOT_TRUSTED );
             throw new CertificateNotTrustedException();
         }
 
@@ -106,4 +124,18 @@ class AuthenticationResponseValidator
         }
         return false;
     }
+
+    private function verifyCertificatePolicyIdentityValue($certificate)
+    {
+        foreach (self::TRUSTED_POLICY_IDENTIFIER_VALUES as $value) {
+            $certificatePolicy = 'Policy: ' . $value;
+
+            if (preg_match("/$certificatePolicy$/m", $certificate['extensions']['certificatePolicies']) == 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
